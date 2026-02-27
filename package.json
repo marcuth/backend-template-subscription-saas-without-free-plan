@@ -26,7 +26,7 @@
     "db:migrate-prod": "npx prisma migrate deploy"
   },
   "dependencies": {
-    "@getbrevo/brevo": "^3.0.4",
+    "@getbrevo/brevo": "^4.0.1",
     "@golevelup/nestjs-stripe": "^0.9.3",
     "@keyv/redis": "^5.1.6",
     "@marcuth/env": "^0.0.1",
