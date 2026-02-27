@@ -42,7 +42,7 @@
     "@prisma/adapter-better-sqlite3": "^7.4.1",
     "@prisma/client": "^7.4.1",
     "@supabase/supabase-js": "^2.98.0",
-    "@types/bcrypt": "^5.0.2",
+    "@types/bcrypt": "^6.0.0",
     "bcrypt": "^6.0.0",
     "cacheable": "^2.3.2",
     "class-transformer": "^0.5.1",
