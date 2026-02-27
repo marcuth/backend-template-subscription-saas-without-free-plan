@@ -5,13 +5,17 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-    provider = "prisma-client"
-    output       = "../src/generated/prisma"
+    provider     = "prisma-client"
     moduleFormat = "cjs"
+    output       = "../src/generated/prisma"
 }
 
 datasource db {
+    // Para SQLite (Padrão)
     provider = "sqlite"
+
+    // Para PostgreSQL (Comente o SQLite acima e descomente abaixo)
+    // provider = "postgresql"
 }
 
 enum UserRole {
@@ -22,7 +26,7 @@ enum UserRole {
 model User {
     id               String        @id @default(uuid())
     createdAt        DateTime      @default(now()) @map("created_at")
-    updatedAt        DateTime      @updatedAt @map("updated_at")
+    updatedAt        DateTime?     @updatedAt @map("updated_at")
     supabaseId       String?       @unique @map("supabase_uid")
     stripeCustomerId String?       @unique @map("stripe_customer_id")
     apiKey           String        @unique @map("api_key")
@@ -40,16 +44,16 @@ model User {
 }
 
 model Plan {
-    id                String   @id @default(uuid())
-    createdAt         DateTime @default(now()) @map("created_at")
-    updatedAt         DateTime @updatedAt @map("updated_at")
-    name              String   @unique
-    slug              String   @unique
+    id                String    @id @default(uuid())
+    createdAt         DateTime  @default(now()) @map("created_at")
+    updatedAt         DateTime? @updatedAt @map("updated_at")
+    name              String    @unique
+    slug              String    @unique
     description       String
     price             Decimal
-    currencyCode      String   @default("BRL") @map("currency_code")
-    externalProductId String   @unique @map("external_product_id")
-    externalPriceId   String   @unique @map("external_price_id")
+    currencyCode      String    @default("BRL") @map("currency_code")
+    externalProductId String    @unique @map("external_product_id")
+    externalPriceId   String    @unique @map("external_price_id")
     features          Json
     users             User[]
 
@@ -70,7 +74,7 @@ enum SubscriptionStatus {
 model Subscription {
     id                 String             @id @default(uuid())
     createdAt          DateTime           @default(now()) @map("created_at")
-    updatedAt          DateTime           @updatedAt @map("updated_at")
+    updatedAt          DateTime?          @updatedAt @map("updated_at")
     userId             String             @unique @map("user_id")
     user               User               @relation(fields: [userId], references: [id], onDelete: Cascade)
     externalId         String             @unique @map("external_id")
