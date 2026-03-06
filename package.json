@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@getbrevo/brevo": "^4.0.1",
-    "@golevelup/nestjs-stripe": "^0.9.3",
+    "@golevelup/nestjs-stripe": "^1.2.0",
     "@keyv/redis": "^5.1.6",
     "@marcuth/env": "^0.0.1",
     "@nestjs/cache-manager": "^3.1.0",
